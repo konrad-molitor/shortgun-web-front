@@ -71,7 +71,7 @@ class Profile extends Component<profileProps, profileState> {
     .then(result => {
       let newUrls = [result, ...this.state.urls]
       this.setState({...this.state, 
-        shortUrl: this.state.baseUrl+'/'+result.shortUrl, 
+        shortUrl: this.state.baseUrl+result.shortUrl, 
         urls: newUrls,
         url: ''
       });
