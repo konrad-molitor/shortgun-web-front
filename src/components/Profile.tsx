@@ -153,12 +153,12 @@ class Profile extends Component<profileProps, profileState> {
                   <InputGroup style={{marginTop: "10px"}}>
                       {(()=>{
                         //@ts-ignore
-                        return <FormControl value={this.state.baseUrl+'/'+url.shortUrl} readOnly={true}/>
+                        return <FormControl value={this.state.baseUrl+url.shortUrl} readOnly={true}/>
                       })()}
                       <InputGroup.Append>
                         <Button variant="outline-success" onClick={() => {
                           //@ts-ignore
-                          this.handleClipboardCopy(this.state.baseUrl+'/'+url.shortUrl);
+                          this.handleClipboardCopy(this.state.baseUrl+url.shortUrl);
                         }}>Copy to clipboard</Button>
                       </InputGroup.Append>
                   </InputGroup>
