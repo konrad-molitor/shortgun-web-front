@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Navbar, Nav, Toast, Button } from 'react-bootstrap';
+//import { Navbar, Nav, Toast, Button } from 'react-bootstrap';
+import { Toast, Button } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
 import { Switch, Route, Redirect } from 'react-router-dom';
 import About from './components/About';
@@ -8,6 +9,8 @@ import Contacts from './components/Contacts';
 import Start from './components/Start';
 import Profile from './components/Profile'
 import { withRouter } from 'react-router-dom';
+
+import Navbar from './elements/Navbar';
 
 
 type AppState = {
@@ -29,7 +32,6 @@ class App extends Component<any, AppState> {
     super(props);
     this.cookiesAccepted = this.cookiesAccepted.bind(this);
     this.getTokenFromStorage = this.getTokenFromStorage.bind(this);
-    this.showLogoutButton = this.showLogoutButton.bind(this);
     this.handleLogin = this.handleLogin.bind(this);
     this.handleSignup = this.handleSignup.bind(this);
     this.handleLogout = this.handleLogout.bind(this);
@@ -134,14 +136,6 @@ class App extends Component<any, AppState> {
     }
   }
 
-  showLogoutButton(show: boolean) {
-    if (show) {
-      return (
-        <Button variant="outline-primary" onClick={this.handleLogout}>Logout</Button>
-      )
-    }
-  }
-
   handleLogout() {
     this.setState({...this.state, loggedIn: false, token: ''});
     window.localStorage.removeItem("userToken");
@@ -155,39 +149,20 @@ class App extends Component<any, AppState> {
   }
 
   render () {
+    const menuItems = [
+      {
+        link: '/contacts',
+        label: 'Contacts'
+      },
+      {
+        link: '/about',
+        label: 'About'
+      }
+    ];
     return (
       <div className="App">
         <header>
-          <Navbar bg="dark" variant="dark" expand="lg">
-            <LinkContainer to="/">
-              <Navbar.Brand>
-                <img 
-                  src="logo.svg"
-                  width="30"
-                  height="30"
-                  className="d-inline-block align-top"
-                  alt="Short.Gun Logo"/>
-                  {' '}
-                Short.Gun
-              </Navbar.Brand>   
-            </LinkContainer>               
-            <Navbar.Toggle/>
-            <Navbar.Collapse className="justify-content-end">
-              <Nav>
-                <LinkContainer to="/contacts">
-                  <Nav.Link>                    
-                    Contacts
-                    </Nav.Link>
-                </LinkContainer>
-                <LinkContainer to="/about">
-                  <Nav.Link>                    
-                    About
-                    </Nav.Link>
-                </LinkContainer>
-              </Nav>
-              {this.showLogoutButton(this.state.loggedIn)}
-            </Navbar.Collapse>
-          </Navbar>
+          <Navbar items={menuItems} logged={this.state.loggedIn} logout={() => this.handleLogout()}/>
         </header>
         <main>
           <Switch>
