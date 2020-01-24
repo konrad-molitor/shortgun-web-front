@@ -77,11 +77,11 @@ const StyledItem = styled('li')<StyledItemProps>`
 
 const rotate = keyframes`
     from {
-        transform: rotate(0deg);
+        transform: rotate(360deg);
     }
 
     to {
-        transform: rotate(360deg);
+        transform: rotate(0deg);
     }
 `;
 
