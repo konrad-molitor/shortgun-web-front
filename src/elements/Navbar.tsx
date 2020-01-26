@@ -52,10 +52,10 @@ const StyledTextDark = styled('span')`
 `;
 
 interface StyledItemProps {
-    display: any;
+    display: Boolean;
 }
 
-const StyledItem = styled('li')<StyledItemProps>`
+const StyledItem = styled.li<StyledItemProps>`
     display: block;
     width: auto;
     margin: 0 10px 0 10px;
@@ -107,15 +107,18 @@ const StyledLogo = styled('li')`
 `;
 
 interface StyledLogoutButtonProps {
-    logged: any;
+    logged: Boolean;
 }
 
-const StyledLogoutButton = styled('button')<StyledLogoutButtonProps>`
+const StyledLogoutButton = styled.button<StyledLogoutButtonProps>`
     background: #D87E4A;
     border: 0;
     color: #222222;
     border-radius: 5px;
-    display: ${props => props.logged ? "block" : "none"}
+    display: ${props => props.logged ? "block" : "none"};
+    @media only screen and (max-width: 768px) {   
+        width: 100%;
+    }
 `;
 
 const StyledMenuToggleButton = styled('button')`
@@ -131,6 +134,7 @@ const StyledMenuToggleButton = styled('button')`
     @media only screen and (max-width: 768px)
     {
         display: block;
+        margin: 0;
     }
 `;
 
@@ -169,7 +173,7 @@ class Navbar extends Component<NavbarProps, {toggled: Boolean}> {
                         </StyledLink>
                     </StyledLogo>
                     {this.props.items.map((item) => 
-                        <StyledItem display={this.state.toggled}>
+                        <StyledItem display={this.state.toggled} key={item.link}>
                             <StyledLink to={item.link}>
                                 {item.label}
                             </StyledLink>
