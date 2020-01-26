@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-//import { Navbar, Nav, Toast, Button } from 'react-bootstrap';
-import { Toast, Button } from 'react-bootstrap';
-import { LinkContainer } from 'react-router-bootstrap';
+import { Toast} from 'react-bootstrap';
 import { Switch, Route, Redirect } from 'react-router-dom';
 import About from './components/About';
 import Contacts from './components/Contacts';
