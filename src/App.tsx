@@ -5,7 +5,8 @@ import { Switch, Route, Redirect } from 'react-router-dom';
 import About from './components/About';
 import Contacts from './components/Contacts';
 import Start from './components/Start';
-import Profile from './components/Profile'
+import Profile from './components/Profile';
+import Footer from './components/Footer';
 import { withRouter } from 'react-router-dom';
 
 import Navbar from './elements/Navbar';
@@ -189,11 +190,7 @@ class App extends Component<any, AppState> {
         }}>
           {this.showCookiesAcknowledgment(!this.state.cookiesInfo)}
         </div>
-        <footer className="bg-dark text-white-50">
-          <div className="container text-center">
-            <small>Copyright &copy; Ismail Valiev (Konrad Molitor)</small>
-          </div>
-        </footer>
+        <Footer/>
       </div>
     );
   }
