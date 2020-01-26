@@ -1,6 +1,4 @@
 import React, { Component } from 'react';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import { Toast} from 'react-bootstrap';
 import { Switch, Route, Redirect } from 'react-router-dom';
 import About from './components/About';
 import Contacts from './components/Contacts';
@@ -8,6 +6,7 @@ import Start from './components/Start';
 import Profile from './components/Profile';
 import Footer from './components/Footer';
 import { withRouter } from 'react-router-dom';
+import styled from 'styled-components';
 
 import Navbar from './elements/Navbar';
 
@@ -18,6 +17,13 @@ type AppState = {
   loggedIn: boolean;
   toasts: Array<any>;
 }
+
+const StyledMain = styled.main`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+`;
 
 class App extends Component<any, AppState> {
   state = {
@@ -112,29 +118,6 @@ class App extends Component<any, AppState> {
     return token;
   }
 
-  showCookiesAcknowledgment(show: boolean) {
-    if (show) {
-      return (
-        <Toast onClose={this.cookiesAccepted}>
-            <Toast.Header>
-              <img 
-                src="info.svg"
-                height="15"
-                width="15"
-                style={{marginRight: "10px"}}
-                alt="Info icon"
-                />                
-              <strong className="mr-auto">{' '}We use cookies!</strong>
-            </Toast.Header>
-            <Toast.Body>
-              To give you the best possible experience, this site uses cookies and by continuing to use the site you agree that we can save them on your device.
-              Cookies used to remember your preferences/some details of your visit and don't collect personal information.
-            </Toast.Body>
-          </Toast>
-      )
-    }
-  }
-
   handleLogout() {
     this.setState({...this.state, loggedIn: false, token: ''});
     window.localStorage.removeItem("userToken");
@@ -163,7 +146,7 @@ class App extends Component<any, AppState> {
         <header>
           <Navbar items={menuItems} logged={this.state.loggedIn} logout={() => this.handleLogout()}/>
         </header>
-        <main>
+        <StyledMain>
           <Switch>
             <Route exact path="/" component={(props: any) => {
                 if (this.state.loggedIn) {
@@ -182,13 +165,12 @@ class App extends Component<any, AppState> {
               }              
             }}/>
           </Switch>
-        </main>
+        </StyledMain>
         <div style={{
           position: "absolute",
           bottom: 10,
           left: 10
         }}>
-          {this.showCookiesAcknowledgment(!this.state.cookiesInfo)}
         </div>
         <Footer/>
       </div>

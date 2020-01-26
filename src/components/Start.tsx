@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { Form, Button, Nav, Tab, Row, Col } from 'react-bootstrap';
+import Tabs, { Tab } from '../elements/Tabs';
+import styled from 'styled-components';
 
 type startProps = {
   login: Function;
@@ -14,6 +15,19 @@ type startState = {
   signupPassword: string;
   signupPasswordConfirmation: string;
 }
+
+const StyledForm = styled.form`
+  display: flex;
+  flex-direction: column;
+  height: 60%;
+  > input {
+    margin: 5px 10px 5px 10px;
+  }
+
+  > label {
+    margin: 5px 10px 5px 10px;
+  }
+`;
 
 class Start extends Component<startProps, startState> {
   state = {
@@ -57,61 +71,30 @@ class Start extends Component<startProps, startState> {
 
   render() {
     return (
-      <div className="h-100 d-flex justify-content-center align-items-center">
-        <Row>
-          <Col>
-            <Tab.Container id="authForm" defaultActiveKey="signup">
-              <div>
-                <Nav fill variant="pills" className="flex-row justify-content-center">
-                  <Nav.Item>
-                    <Nav.Link eventKey="login">Login</Nav.Link>
-                  </Nav.Item>
-                  <Nav.Item>
-                    <Nav.Link eventKey="signup">Signup</Nav.Link>
-                  </Nav.Item>
-                </Nav>          
-              </div>
-              <div>
-                <Tab.Content style={{marginTop: "15px"}}>
-                  <Tab.Pane eventKey="login">
-                    <Form onSubmit={this.handleLogin}>
-                      <Form.Group controlId="formEmailLogin">
-                        <Form.Label>Email:</Form.Label>
-                        <Form.Control type="email" placeholder="Enter email" autoComplete="current-email" name="loginEmail" value={this.state.loginEmail} onChange={this.handleChange} required/>
-                      </Form.Group>
-                      <Form.Group controlId="formPasswordLogin">
-                        <Form.Label>Password:</Form.Label>
-                        <Form.Control type="password" placeholder="password" autoComplete="current-password" value={this.state.loginPassword} name="loginPassword" onChange={this.handleChange} required/>
-                      </Form.Group>
-                      <Form.Group controlId="formKeepLoggedIn">
-                        <Form.Check type="checkbox" label ="Keep me logged in" checked={this.state.keepLogged} name="keepLogged" onChange={this.handleChange}/>
-                      </Form.Group>
-                      <Button variant="primary" type="submit" size="lg" block>Login</Button>
-                    </Form>
-                  </Tab.Pane>          
-                  <Tab.Pane eventKey="signup">
-                    <Form onSubmit={this.handleSignup}>
-                      <Form.Group controlId="formSignupEmail">
-                        <Form.Label>Email:</Form.Label>
-                        <Form.Control type="email" placeholder="Enter email" autoComplete="current-email" value={this.state.signupEmail} name="signupEmail" onChange={this.handleChange} required/>
-                      </Form.Group>
-                      <Form.Group controlId="formSignupPassword">
-                        <Form.Label>Password:</Form.Label>
-                        <Form.Control type="password" placeholder="Enter password" name="signupPassword" value={this.state.signupPassword} onChange={this.handleChange} autoComplete="new-password" required/>
-                      </Form.Group>
-                      <Form.Group controlId="formSignupConfirmPassword">
-                        <Form.Label>Confirm password:</Form.Label>
-                        <Form.Control type="password" placeholder="Confirm password" name="signupPasswordConfirmation" value={this.state.signupPasswordConfirmation} onChange={this.handleChange} autoComplete="off" required/>
-                      </Form.Group>
-                      <Button variant="primary" type="submit" size="lg" block>Signup</Button>
-                    </Form>
-                  </Tab.Pane>
-                </Tab.Content>
-              </div>
-           </Tab.Container>     
-          </Col>
-        </Row>           
-      </div>
+        <Tabs default="signup">
+          <Tab label="Login" tabId="login">
+            <StyledForm onSubmit={this.handleLogin}>
+              <label>Email:</label>
+              <input type="email" placeholder="Enter email" autoComplete="current-email" name="loginEmail" value={this.state.loginEmail} onChange={this.handleChange} required/>
+              <label>Password:</label>
+              <input type="password" placeholder="Password" autoComplete="current-password" value={this.state.loginPassword} name="loginPassword" onChange={this.handleChange} required/>
+              <input type="checkbox" checked={this.state.keepLogged} name="keepLogged" onChange={this.handleChange}/>
+              <label>Keep me logged</label>
+              <button type="submit">Login</button>
+            </StyledForm>
+          </Tab>
+          <Tab label="Sign Up" tabId="signup">
+            <StyledForm onSubmit={this.handleSignup}>
+            <label>Email:</label>
+            <input type="email" placeholder="Enter email" autoComplete="current-email" value={this.state.signupEmail} name="signupEmail" onChange={this.handleChange} required/>
+            <label>Password:</label>
+            <input type="password" placeholder="Enter password" name="signupPassword" value={this.state.signupPassword} onChange={this.handleChange} autoComplete="new-password" required/>
+            <label>Confirm password:</label>
+            <input type="password" placeholder="Confirm password" name="signupPasswordConfirmation" value={this.state.signupPasswordConfirmation} onChange={this.handleChange} autoComplete="off" required/>
+            <button type="submit">Signup</button>
+            </StyledForm>
+          </Tab>
+        </Tabs>
     )
   }  
 }
