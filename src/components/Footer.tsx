@@ -3,9 +3,9 @@ import React from 'react';
 
 const StyledFooter = styled.div`
     width: 100%;
-    background: #D87E4A;
+    background: ${props => props.theme.textOrange};
     height: 50px;
-    color: #6f6e6c;
+    color: ${props => props.theme.textRegular};
     text-align: center;
     line-height: 50px;
     padding: 0;

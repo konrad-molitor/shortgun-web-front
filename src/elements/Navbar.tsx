@@ -9,8 +9,8 @@ export interface NavbarProps {
 };
 
 const StyledNav = styled.nav`
-    background: #222222;
-    color: #6f6e6c;
+    background: ${props => props.theme.colorDarkBackground};
+    color: ${props => props.theme.textRegular};
     font-family: sans-serif;
     padding: 5px 20px;
     font-size: 16px;
@@ -38,16 +38,16 @@ const StyledMenu = styled.ul`
 
 const StyledLink = styled(Link)`
     text-decoration: none;
-    color: #a6a6a6;
+    color: ${props => props.theme.textRegular};
 `;
 
 const StyledTextAccent = styled('span')`
-    color: #D87E4A;
+    color: ${props => props.theme.colorOrangeAccent};
     font-size: 20px;
 `;
 
 const StyledTextDark = styled('span')`
-    color: #696969;
+    color: ${props => props.theme.textGray};
     font-size: 20px;
 `;
 
@@ -71,7 +71,7 @@ const StyledItem = styled.li<StyledItemProps>`
 
     > a:hover {
         text-decoration: none;
-        color: #f9a427;
+        color: ${props => props.theme.colorOrangeLight};
     }
 `;
 
@@ -91,7 +91,7 @@ const StyledLogo = styled('li')`
         text-decoration: none;
     }
     a > img {
-        padding-bottom: 5px;
+       vertical-align: text-bottom;
     }
     &:hover {
         a > img {
@@ -111,9 +111,9 @@ interface StyledLogoutButtonProps {
 }
 
 const StyledLogoutButton = styled.button<StyledLogoutButtonProps>`
-    background: #D87E4A;
+    background: ${props => props.theme.colorOrangeAccent};
     border: 0;
-    color: #222222;
+    color: ${props => props.theme.colorDarkBackground};
     border-radius: 5px;
     display: ${props => props.logged ? "block" : "none"};
     @media only screen and (max-width: 768px) {   
@@ -125,7 +125,7 @@ const StyledMenuToggleButton = styled('button')`
     background: none;
     border: 0;
     > svg {
-        fill: #D87E4A;
+        fill: ${props => props.theme.colorOrangeAccent};
     }
     &:focus {
         outline: none;

@@ -53,7 +53,7 @@ const StyledTab = styled.li`
     padding: 0;
     border-width: 1px 1px 0px 1px;
     border-style: solid;
-    border-color: #D87E4A;
+    border-color: ${props => props.theme.textOrange};
     border-top-right-radius: 5px;
     border-top-left-radius: 5px;
     > button {
@@ -61,7 +61,7 @@ const StyledTab = styled.li`
         background: none;
         border: none;
         height: 100%;
-        color: #D87E4A;
+        color: ${props => props.theme.textOrange};
         font-size: 15px;
         font-weight: bold;
 
@@ -73,13 +73,13 @@ const StyledTab = styled.li`
 
 const StyledActiveTab = styled(StyledTab)`
     > button {
-        background: #D87E4A;
-        color: #222222;
+        background: ${props => props.theme.textOrange};
+        color: ${props => props.theme.colorDarkBackground};
     }
 `;
 
 const StyledTabPane = styled.div`
-    background: #D87E4A;
+    background: ${props => props.theme.textOrange};
 `;
 
 class Tabs extends Component<TabsComponentProps, TabsComponentState> {
