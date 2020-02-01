@@ -17,15 +17,40 @@ type startState = {
 }
 
 const StyledForm = styled.form`
+  margin: 20px;
   display: flex;
   flex-direction: column;
+  color: ${props => props.theme.colors.accent};
+  font-weight: bold;
+  font-size: 20px;
   height: 60%;
   > input {
-    margin: 5px 10px 5px 10px;
+    margin-bottom: 10px;
+    border: none;
+    border-bottom: 1px solid ${props => props.theme.colors.regular};
+    background: ${props => props.theme.colors.light};
+    color: ${props => props.theme.colors.regular};
+    font-size: 20px;
+    font-weight: lighter;
+
+    &:focus {
+      outline: none;
+    }
   }
 
   > label {
-    margin: 5px 10px 5px 10px;
+    margin-bottom: 10px;
+  }
+
+  > button {
+    background: ${props => props.theme.semantics.success};
+    border: none;
+    color: ${props => props.theme.colors.dark};
+    font-size: 20px;
+    font-weight: bold;
+    border-radius: 5px;
+    margin-top: 10px;
+    padding: 5px;
   }
 `;
 
@@ -78,8 +103,10 @@ class Start extends Component<startProps, startState> {
               <input type="email" placeholder="Enter email" autoComplete="current-email" name="loginEmail" value={this.state.loginEmail} onChange={this.handleChange} required/>
               <label>Password:</label>
               <input type="password" placeholder="Password" autoComplete="current-password" value={this.state.loginPassword} name="loginPassword" onChange={this.handleChange} required/>
-              <input type="checkbox" checked={this.state.keepLogged} name="keepLogged" onChange={this.handleChange}/>
-              <label>Keep me logged</label>
+              <span>
+                <input type="checkbox" checked={this.state.keepLogged} name="keepLogged" onChange={this.handleChange}/>
+                <label>Keep me logged</label>
+              </span>              
               <button type="submit">Login</button>
             </StyledForm>
           </Tab>

@@ -23,6 +23,7 @@ const StyledMain = styled.main`
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  background: ${props => props.theme.colors.dark};
 `;
 
 class App extends Component<any, AppState> {

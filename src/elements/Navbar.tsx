@@ -9,8 +9,8 @@ export interface NavbarProps {
 };
 
 const StyledNav = styled.nav`
-    background: ${props => props.theme.colorDarkBackground};
-    color: ${props => props.theme.textRegular};
+    background: ${props => props.theme.colors.dark};
+    color: ${props => props.theme.colors.regular};
     font-family: sans-serif;
     padding: 5px 20px;
     font-size: 16px;
@@ -38,16 +38,16 @@ const StyledMenu = styled.ul`
 
 const StyledLink = styled(Link)`
     text-decoration: none;
-    color: ${props => props.theme.textRegular};
+    color: ${props => props.theme.colors.regular};
 `;
 
 const StyledTextAccent = styled('span')`
-    color: ${props => props.theme.colorOrangeAccent};
+    color: ${props => props.theme.colors.main};
     font-size: 20px;
 `;
 
 const StyledTextDark = styled('span')`
-    color: ${props => props.theme.textGray};
+    color: ${props => props.theme.colors.regular};
     font-size: 20px;
 `;
 
@@ -71,7 +71,7 @@ const StyledItem = styled.li<StyledItemProps>`
 
     > a:hover {
         text-decoration: none;
-        color: ${props => props.theme.colorOrangeLight};
+        color: ${props => props.theme.colors.main};
     }
 `;
 
@@ -111,9 +111,11 @@ interface StyledLogoutButtonProps {
 }
 
 const StyledLogoutButton = styled.button<StyledLogoutButtonProps>`
-    background: ${props => props.theme.colorOrangeAccent};
+    background: ${props => props.theme.colors.accent};
+    font-size: 20px;
+    font-weight: bold;
     border: 0;
-    color: ${props => props.theme.colorDarkBackground};
+    color: ${props => props.theme.colors.dark};
     border-radius: 5px;
     display: ${props => props.logged ? "block" : "none"};
     @media only screen and (max-width: 768px) {   
@@ -125,7 +127,7 @@ const StyledMenuToggleButton = styled('button')`
     background: none;
     border: 0;
     > svg {
-        fill: ${props => props.theme.colorOrangeAccent};
+        fill: ${props => props.theme.colors.main};
     }
     &:focus {
         outline: none;

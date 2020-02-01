@@ -30,7 +30,9 @@ interface TabsComponentState {
 const StyledTabsWrapper = styled.div`
     display: flex;
     flex-direction: column;
+    height: 60%;
     width: 60%;
+    max-width: 500px;
     margin: 0;
     padding: 0;
 `;
@@ -53,7 +55,7 @@ const StyledTab = styled.li`
     padding: 0;
     border-width: 1px 1px 0px 1px;
     border-style: solid;
-    border-color: ${props => props.theme.textOrange};
+    border-color: ${props => props.theme.colors.light};
     border-top-right-radius: 5px;
     border-top-left-radius: 5px;
     > button {
@@ -61,9 +63,11 @@ const StyledTab = styled.li`
         background: none;
         border: none;
         height: 100%;
-        color: ${props => props.theme.textOrange};
-        font-size: 15px;
+        color: ${props => props.theme.colors.regular};
+        font-size: 20px;
         font-weight: bold;
+        border-top-right-radius: 3px;
+        border-top-left-radius: 3px;
 
         &:focus {
             outline: none;
@@ -73,13 +77,14 @@ const StyledTab = styled.li`
 
 const StyledActiveTab = styled(StyledTab)`
     > button {
-        background: ${props => props.theme.textOrange};
-        color: ${props => props.theme.colorDarkBackground};
+        background: ${props => props.theme.colors.light};
+        color: ${props => props.theme.colors.main};
     }
 `;
 
 const StyledTabPane = styled.div`
-    background: ${props => props.theme.textOrange};
+    background: ${props => props.theme.colors.light};
+    border: 1px 1px 1px 1px;
 `;
 
 class Tabs extends Component<TabsComponentProps, TabsComponentState> {
