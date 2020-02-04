@@ -5,6 +5,10 @@ import styled from 'styled-components';
 type startProps = {
   login: Function;
   signup: Function;
+  error?: {
+    action: String;
+    message: String;
+  }
 }
 
 type startState = {
@@ -17,7 +21,7 @@ type startState = {
 }
 
 const StyledForm = styled.form`
-  margin: 20px;
+  margin: 30px;
   display: flex;
   flex-direction: column;
   color: ${props => props.theme.colors.accent};
@@ -25,7 +29,7 @@ const StyledForm = styled.form`
   font-size: 20px;
   height: 60%;
   > input {
-    margin-bottom: 10px;
+    margin-bottom: 20px;
     border: none;
     border-bottom: 1px solid ${props => props.theme.colors.regular};
     background: ${props => props.theme.colors.light};
@@ -50,8 +54,17 @@ const StyledForm = styled.form`
     font-weight: bold;
     border-radius: 5px;
     margin-top: 10px;
-    padding: 5px;
+    padding: 10px;
   }
+`;
+
+const ErrorLabel = styled.div`
+  background: ${props => props.theme.semantics.danger};
+  color: ${props => props.theme.colors.dark};
+  padding: 10px;
+  font-size: 15px;
+  margin-top: 10px;
+  margin-bottom: 10px;
 `;
 
 class Start extends Component<startProps, startState> {
@@ -96,7 +109,7 @@ class Start extends Component<startProps, startState> {
 
   render() {
     return (
-        <Tabs default="signup">
+        <Tabs default={this.props.error?.action || "signup"}>
           <Tab label="Login" tabId="login">
             <StyledForm onSubmit={this.handleLogin}>
               <label>Email:</label>
@@ -106,7 +119,8 @@ class Start extends Component<startProps, startState> {
               <span>
                 <input type="checkbox" checked={this.state.keepLogged} name="keepLogged" onChange={this.handleChange}/>
                 <label>Keep me logged</label>
-              </span>              
+              </span>
+              {this.props.error && this.props.error.action === "login" ? <ErrorLabel>{this.props.error.message}</ErrorLabel> : null}
               <button type="submit">Login</button>
             </StyledForm>
           </Tab>
@@ -118,6 +132,7 @@ class Start extends Component<startProps, startState> {
             <input type="password" placeholder="Enter password" name="signupPassword" value={this.state.signupPassword} onChange={this.handleChange} autoComplete="new-password" required/>
             <label>Confirm password:</label>
             <input type="password" placeholder="Confirm password" name="signupPasswordConfirmation" value={this.state.signupPasswordConfirmation} onChange={this.handleChange} autoComplete="off" required/>
+            {this.props.error && this.props.error.action === "signup" ? <ErrorLabel>{this.props.error.message}</ErrorLabel> : null}
             <button type="submit">Signup</button>
             </StyledForm>
           </Tab>

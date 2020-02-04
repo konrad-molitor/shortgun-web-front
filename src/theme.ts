@@ -9,7 +9,7 @@ const theme = {
     semantics: {
         primary: "#f59327",
         info: "#243539",
-        success: "#7fa744",
+        success: "#d6f7bc",
         warning: "#fc970c",
         danger: "#f44336"
     }

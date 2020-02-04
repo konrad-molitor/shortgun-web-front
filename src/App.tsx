@@ -16,6 +16,10 @@ type AppState = {
   cookiesInfo: boolean;
   loggedIn: boolean;
   toasts: Array<any>;
+  authError?: {
+    action: String;
+    message: String;
+  }
 }
 
 const StyledMain = styled.main`
@@ -31,7 +35,8 @@ class App extends Component<any, AppState> {
     token: '',
     cookiesInfo: false,
     loggedIn: false,
-    toasts: []
+    toasts: [],
+    authError: undefined
   }
 
   constructor(props: any) {
@@ -68,7 +73,13 @@ class App extends Component<any, AppState> {
     })
     .then(res => {
       if (!res.ok) {
-        throw new Error("HTTP err" + res.status);
+        if (res.status === 404 || res.status === 500) {
+          this.setState({...this.state, authError: {action: "login", message: "Server error occured. Please, try again later."}});
+        } else if (res.status === 403) {
+          this.setState({...this.state, authError: {action: "login", message: "Wrong email or/and password. Please, check your authorization data."}});
+        } else {
+          this.setState({...this.state, authError: {action: "login", message: "Unknown network error occured. Please, check your connection."}});
+        }        
       }
       return res.json();
     })
@@ -96,12 +107,27 @@ class App extends Component<any, AppState> {
     })
     .then(res => {
       if (!res.ok) {
-        throw new Error ("HTTP Error:" + res.status);
-      }
-      res.json()
+        if (res.status === 409) {
+          throw new Error("already_exist");
+        } else if (res.status === 500) {
+          throw new Error("server_error");
+        } else {
+          throw new Error("unknown_error");
+        }
+      } else {
+        res.json();
+      }      
     })
     .then(result => {
       this.handleLogin(email, password, false);
+    }).catch(e => {
+      if (e.message === "already_exist") {
+        this.setState({...this.state, authError: {action: "signup", message: "User with this email already exist."}});
+      } else if (e.message === "server_error") {
+        this.setState({...this.state, authError: {action: "signup", message: "Server error occured. Please try again later."}});
+      } else {
+        this.setState({...this.state, authError: {action: "signup", message: "Unknown error occured. Please try again later."}});
+      }
     })
   }
 
@@ -153,7 +179,7 @@ class App extends Component<any, AppState> {
                 if (this.state.loggedIn) {
                   return <Redirect to="/profile"/>
                 } else {
-                  return <Start {...props} login={this.handleLogin} signup={this.handleSignup}/>
+                  return <Start {...props} login={this.handleLogin} signup={this.handleSignup} error={this.state.authError || undefined}/>
                 }
               }} />
             <Route path="/about" component={About}/>

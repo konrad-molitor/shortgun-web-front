@@ -30,9 +30,8 @@ interface TabsComponentState {
 const StyledTabsWrapper = styled.div`
     display: flex;
     flex-direction: column;
-    height: 60%;
-    width: 60%;
-    max-width: 500px;
+    max-height: 800px;
+    max-width: 800px;
     margin: 0;
     padding: 0;
 `;
@@ -85,6 +84,8 @@ const StyledActiveTab = styled(StyledTab)`
 const StyledTabPane = styled.div`
     background: ${props => props.theme.colors.light};
     border: 1px 1px 1px 1px;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
 `;
 
 class Tabs extends Component<TabsComponentProps, TabsComponentState> {
