@@ -183,7 +183,10 @@ class App extends Component<any, AppState> {
                 }
               }} />
             <Route path="/about" component={About}/>
-            <Route path="/contacts" component={Contacts}/>
+            <Route path="/contacts" render={(props: any) => {
+              if (this.state.loggedIn) return <Contacts token={this.state.token}/>;
+              else return <Contacts/>;
+            }}/>
             <Route path="/profile" component={(props: any) => {
               if (this.state.loggedIn) {
                 return <Profile {...props} token={this.state.token}/>

@@ -1,6 +1,10 @@
 import React, { useState, FormEvent } from 'react';
 import styled from 'styled-components';
 
+type contactsProps = {
+  token?: string;
+}
+
 const StyledContactsWrapper = styled.div`
   background: ${props => props.theme.colors.light};
   border-radius: 5px;
@@ -56,7 +60,7 @@ const StyledContactsWrapper = styled.div`
   }
 `;
 
-const Contacts = () => {
+const Contacts = (props: contactsProps) => {
   const [email, setEmail] = useState('');
   const [message, setMessage] = useState('');
   const sendMessage = async (e: FormEvent) => {
@@ -67,13 +71,22 @@ const Contacts = () => {
       email,
       message
     };
-    await fetch(`/a/message/`, {
+    let fetchParams: any = {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify(data)
-    })
+    };
+    if (props.token) {
+      fetchParams.headers['X-Auth'] = `Bearer: ${props.token}`;
+    }
+    try {
+      console.log(fetchParams);
+      await fetch(`/a/message/`, fetchParams);
+    } catch (e) {
+      console.log(e);
+    }
   }
 
   return (
