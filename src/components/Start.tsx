@@ -26,7 +26,7 @@ const StyledForm = styled.form`
   flex-direction: column;
   color: ${props => props.theme.colors.accent};
   font-weight: bold;
-  font-size: 1.6rem;
+  font-size: ${props => props.theme.defaults.fontSize};
   height: 60%;
   > input {
     margin-bottom: 20px;
@@ -34,7 +34,7 @@ const StyledForm = styled.form`
     border-bottom: 1px solid ${props => props.theme.colors.regular};
     background: ${props => props.theme.colors.light};
     color: ${props => props.theme.colors.regular};
-    font-size: 1.6rem;
+    font-size: ${props => props.theme.defaults.fontSize};
     font-weight: lighter;
 
     &:focus {
@@ -50,7 +50,7 @@ const StyledForm = styled.form`
     background: ${props => props.theme.semantics.success};
     border: 1px solid ${props => props.theme.colors.dark};
     color: ${props => props.theme.colors.dark};
-    font-size: 1.6rem;
+    font-size: ${props => props.theme.defaults.fontSize};
     font-weight: bold;
     border-radius: 5px;
     margin-top: 10px;
@@ -62,7 +62,7 @@ const ErrorLabel = styled.div`
   background: ${props => props.theme.semantics.danger};
   color: ${props => props.theme.colors.dark};
   padding: 1rem;
-  font-size: 1.6rem;
+  font-size: ${props => props.theme.defaults.fontSize};
   margin-top: 1rem;
   margin-bottom: 1rem;
 `;

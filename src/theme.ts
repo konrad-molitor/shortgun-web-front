@@ -12,6 +12,9 @@ const theme = {
         success: "#d6f7bc",
         warning: "#fc970c",
         danger: "#f44336"
+    },
+    defaults: {
+        fontSize: "2rem"
     }
 }
 

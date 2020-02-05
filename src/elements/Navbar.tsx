@@ -12,8 +12,8 @@ const StyledNav = styled.nav`
     background: ${props => props.theme.colors.dark};
     color: ${props => props.theme.colors.regular};
     font-family: sans-serif;
-    padding: 5px 20px;
-    font-size: 1.6rem;
+    padding: 0.5rem 2rem;
+    font-size: ${props => props.theme.defaults.fontSize};
     font-weight: bold;
 `;
 
@@ -43,12 +43,12 @@ const StyledLink = styled(Link)`
 
 const StyledTextAccent = styled('span')`
     color: ${props => props.theme.colors.main};
-    font-size: 1.6rem;
+    font-size: ${props => props.theme.defaults.fontSize};
 `;
 
 const StyledTextDark = styled('span')`
     color: ${props => props.theme.colors.regular};
-    font-size: 1.6rem;
+    font-size: ${props => props.theme.defaults.fontSize};
 `;
 
 interface StyledItemProps {
@@ -58,14 +58,14 @@ interface StyledItemProps {
 const StyledItem = styled.li<StyledItemProps>`
     display: block;
     width: auto;
-    margin: 0 10px 0 10px;
+    margin: 0 1rem 0 1rem;
     
     @media only screen and (max-width: 768px)
     {
         width: 100%;
         text-align: center;
         order: 2;
-        margin: 10px;
+        margin: 1rem;
         display: ${props => props.display ? "block" : "none"};
     }
 
@@ -112,7 +112,7 @@ interface StyledLogoutButtonProps {
 
 const StyledLogoutButton = styled.button<StyledLogoutButtonProps>`
     background: ${props => props.theme.colors.accent};
-    font-size: 1.6rem;
+    font-size: ${props => props.theme.defaults.fontSize};
     font-weight: bold;
     border: 0;
     color: ${props => props.theme.colors.dark};

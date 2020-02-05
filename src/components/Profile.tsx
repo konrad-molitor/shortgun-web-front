@@ -47,14 +47,14 @@ const StyledShortCutItem = styled.div`
   > button {
     background: ${props => props.theme.semantics.danger};
     color: ${props => props.theme.colors.light};
-    font-size: 1.6rem;
+    font-size: ${props => props.theme.defaults.fontSize};
     padding: 1rem;
     border: 1px solid ${props => props.theme.colors.dark};
     border-radius: 5px;
 
     @media only screen and (max-width: 768px) {
       padding: 0.5rem;
-      font-size: 1.6rem;
+      font-size: ${props => props.theme.defaults.fontSize};
     }
   }
 `;
@@ -70,18 +70,18 @@ const StyledAddShortcutForm = styled.div`
     {   
         width: auto;
         padding: 1rem;
-        font-size: 1.6rem;
+        font-size: ${props => props.theme.defaults.fontSize};
         border-radius: 0;
     }
 
   > form {
     display: flex;
     flex-direction: column;
-    font-size: 1.6rem;
+    font-size: ${props => props.theme.defaults.fontSize};
     color: ${props => props.theme.colors.dark};
 
     @media only screen and (max-width: 768px) {
-      font-size: 1.6rem;
+      font-size: ${props => props.theme.defaults.fontSize};
     }
 
     > * {
@@ -92,7 +92,7 @@ const StyledAddShortcutForm = styled.div`
     > label {
       margin-bottom: 0.5rem;
       @media only screen and (max-width: 768px) {
-        font-size: 1.6rem;
+        font-size: ${props => props.theme.defaults.fontSize};
       }
     }
 
@@ -101,11 +101,11 @@ const StyledAddShortcutForm = styled.div`
       padding: 0.5rem;
       border: 1px solid ${props => props.theme.colors.dark};
       border-radius: 5px;
-      font-size: 1.6rem;
+      font-size: ${props => props.theme.defaults.fontSize};
       color: ${props => props.theme.colors.dark};
 
       @media only screen and (max-width: 768px) {
-        font-size: 1.6rem;
+        font-size: ${props => props.theme.defaults.fontSize};
       }
     }
   }

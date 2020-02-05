@@ -22,7 +22,7 @@ const StyledAboutWrapper = styled.div`
     align-self: center;
   }
   > p {
-    font-size: 1.6rem;
+    font-size: ${props => props.theme.defaults.fontSize};
   }
 
   > button {
@@ -30,7 +30,7 @@ const StyledAboutWrapper = styled.div`
     background: ${props => props.theme.semantics.info};
     border: none;
     color: ${props => props.theme.colors.light};
-    font-size: 1.6rem;
+    font-size: ${props => props.theme.defaults.fontSize};
     font-weight: bolder;
     padding: 10px;
     border-radius: 5px;

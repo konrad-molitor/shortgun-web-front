@@ -69,7 +69,7 @@ const StyledTab = styled.li`
         border: none;
         height: 100%;
         color: ${props => props.theme.colors.regular};
-        font-size: 1.6rem;
+        font-size: ${props => props.theme.defaults.fontSize};
         font-weight: bold;
         border-top-right-radius: 3px;
         border-top-left-radius: 3px;

@@ -11,7 +11,7 @@ const StyledFooter = styled.div`
     padding: 0;
     margin: 0;
     font-weight: bold;
-    font-size: 1.6rem;
+    font-size: ${props => props.theme.defaults.fontSize};
 `;
 
 
