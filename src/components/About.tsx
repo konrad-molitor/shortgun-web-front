@@ -11,6 +11,7 @@ const StyledAboutWrapper = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
+  font-size: ${props => props.theme.defaults.fontSize};
 
   > h1 {
     text-align: center;
