@@ -34,6 +34,12 @@ const StyledTabsWrapper = styled.div`
     max-width: 800px;
     margin: 0;
     padding: 0;
+
+    @media only screen and (max-width: 768px) {
+      width: auto;
+      max-height: 100%;
+      max-width: 100%;
+    }
 `;
 
 const StyledTabs = styled.ul`
@@ -63,7 +69,7 @@ const StyledTab = styled.li`
         border: none;
         height: 100%;
         color: ${props => props.theme.colors.regular};
-        font-size: 20px;
+        font-size: 1.6rem;
         font-weight: bold;
         border-top-right-radius: 3px;
         border-top-left-radius: 3px;

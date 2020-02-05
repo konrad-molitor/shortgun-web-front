@@ -24,54 +24,89 @@ type profileState = {
 const StyledShortCutItem = styled.div`
   background: ${props => props.theme.colors.light};
   border-radius: 5px;
-  width: 500px;
+  width: 50rem;
   margin: 0;
-  padding: 20px;
+  padding: 2rem;
+
+  @media only screen and (max-width: 768px) {   
+        width: auto;
+        padding: 1rem;
+        border-radius: 0;
+  }
 
   > * {
-    margin-top: 10px;
-    margin-bottom: 10px;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+
+    @media only screen and (max-width: 768px) {
+      margin-top: 0.5rem;
+      margin-bottom: 0.5rem;
+    }
   }
 
   > button {
     background: ${props => props.theme.semantics.danger};
     color: ${props => props.theme.colors.light};
-    font-size: 20px;
-    padding: 10px;
+    font-size: 1.6rem;
+    padding: 1rem;
     border: 1px solid ${props => props.theme.colors.dark};
     border-radius: 5px;
+
+    @media only screen and (max-width: 768px) {
+      padding: 0.5rem;
+      font-size: 1.6rem;
+    }
   }
 `;
 
 const StyledAddShortcutForm = styled.div`
   background: ${props => props.theme.semantics.success};
   border-radius: 5px;
-  width: 500px;
+  width: 50rem;
   margin: 0;
-  padding: 20px;
+  padding: 2rem;
+
+  @media only screen and (max-width: 768px)
+    {   
+        width: auto;
+        padding: 1rem;
+        font-size: 1.6rem;
+        border-radius: 0;
+    }
 
   > form {
     display: flex;
     flex-direction: column;
-    font-size: 20px;
+    font-size: 1.6rem;
     color: ${props => props.theme.colors.dark};
 
+    @media only screen and (max-width: 768px) {
+      font-size: 1.6rem;
+    }
+
     > * {
-      margin-top: 10px;
-      margin-bottom: 10px;
+      margin-top: 1rem;
+      margin-bottom: 1rem;
     }
 
     > label {
-      margin-bottom: 5px;
+      margin-bottom: 0.5rem;
+      @media only screen and (max-width: 768px) {
+        font-size: 1.6rem;
+      }
     }
 
     > button {
       background: ${props => props.theme.colors.main};
-      padding: 5px;
+      padding: 0.5rem;
       border: 1px solid ${props => props.theme.colors.dark};
       border-radius: 5px;
-      font-size: 20px;
+      font-size: 1.6rem;
       color: ${props => props.theme.colors.dark};
+
+      @media only screen and (max-width: 768px) {
+        font-size: 1.6rem;
+      }
     }
   }
 `;
@@ -80,11 +115,23 @@ const StyledProfileWrapper = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  margin-top: 80px;
+  margin-top: 8rem;
+  padding: 0;
 
   > * {
-    margin: 2.5%;
+    margin: 2.5rem;
+    @media only screen and (max-width: 768px) {
+      margin: 0;
+      margin-top: 1rem;
+      margin-bottom: 1rem;
+    }
   }
+
+  @media only screen and (max-width: 768px)
+    {   
+        width: 100%;
+        margin-top: 5rem;
+    }
 `;
 
 class Profile extends Component<profileProps, profileState> {
@@ -269,7 +316,7 @@ class Profile extends Component<profileProps, profileState> {
                   }
                 }
               />
-              <button style={{fontWeight: "bold"}} onClick={() => this.handleDeleteShortcut(item._id)}>Delete shortcut</button>
+              <button onClick={() => this.handleDeleteShortcut(item._id)}>Delete shortcut</button>
             </StyledShortCutItem>
           )
         })}

@@ -13,7 +13,7 @@ const StyledNav = styled.nav`
     color: ${props => props.theme.colors.regular};
     font-family: sans-serif;
     padding: 5px 20px;
-    font-size: 16px;
+    font-size: 1.6rem;
     font-weight: bold;
 `;
 
@@ -43,12 +43,12 @@ const StyledLink = styled(Link)`
 
 const StyledTextAccent = styled('span')`
     color: ${props => props.theme.colors.main};
-    font-size: 20px;
+    font-size: 1.6rem;
 `;
 
 const StyledTextDark = styled('span')`
     color: ${props => props.theme.colors.regular};
-    font-size: 20px;
+    font-size: 1.6rem;
 `;
 
 interface StyledItemProps {
@@ -112,7 +112,7 @@ interface StyledLogoutButtonProps {
 
 const StyledLogoutButton = styled.button<StyledLogoutButtonProps>`
     background: ${props => props.theme.colors.accent};
-    font-size: 20px;
+    font-size: 1.6rem;
     font-weight: bold;
     border: 0;
     color: ${props => props.theme.colors.dark};

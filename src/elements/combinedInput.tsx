@@ -32,12 +32,22 @@ const StyledTextInput = styled.input<{backgroundColor?: string, textColor?: stri
     border-top-left-radius: 5px;
     border-bottom-left-radius: 5px;
     margin-right: 0;
-    font-size: 20px;
+    font-size: 1.6rem;
     padding: 5px;
     color: ${props => props.textColor || props.theme.colors.dark};
 
     &:focus {
         outline: none;
+    }
+
+    @media only screen and (max-width: 768px)
+    {   
+        font-size: 1.6rem;
+        padding: 2.5px;
+        
+        > * {
+          margin: 2.5px;
+        }
     }
 `;
 
@@ -47,8 +57,14 @@ const StyledButton = styled.button<{backgroundColor?: string, textColor?: string
     border-top-right-radius: 5px;
     border-bottom-right-radius: 5px;
     margin-left: -1px;
-    font-size: 20px;
+    font-size: 1.6rem;
     color: ${props => props.textColor || props.theme.colors.dark};
+
+    @media only screen and (max-width: 768px)
+    {   
+        font-size: 1.6rem;        
+        
+    }
 `;
 
 const combinedInput = (props: combinedInputProps) => {

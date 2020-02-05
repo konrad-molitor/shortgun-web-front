@@ -26,7 +26,7 @@ const StyledForm = styled.form`
   flex-direction: column;
   color: ${props => props.theme.colors.accent};
   font-weight: bold;
-  font-size: 20px;
+  font-size: 1.6rem;
   height: 60%;
   > input {
     margin-bottom: 20px;
@@ -34,7 +34,7 @@ const StyledForm = styled.form`
     border-bottom: 1px solid ${props => props.theme.colors.regular};
     background: ${props => props.theme.colors.light};
     color: ${props => props.theme.colors.regular};
-    font-size: 20px;
+    font-size: 1.6rem;
     font-weight: lighter;
 
     &:focus {
@@ -48,9 +48,9 @@ const StyledForm = styled.form`
 
   > button {
     background: ${props => props.theme.semantics.success};
-    border: none;
+    border: 1px solid ${props => props.theme.colors.dark};
     color: ${props => props.theme.colors.dark};
-    font-size: 20px;
+    font-size: 1.6rem;
     font-weight: bold;
     border-radius: 5px;
     margin-top: 10px;
@@ -61,10 +61,10 @@ const StyledForm = styled.form`
 const ErrorLabel = styled.div`
   background: ${props => props.theme.semantics.danger};
   color: ${props => props.theme.colors.dark};
-  padding: 10px;
-  font-size: 15px;
-  margin-top: 10px;
-  margin-bottom: 10px;
+  padding: 1rem;
+  font-size: 1.6rem;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
 `;
 
 class Start extends Component<startProps, startState> {

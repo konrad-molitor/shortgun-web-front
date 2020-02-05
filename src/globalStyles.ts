@@ -13,6 +13,7 @@ const GlobalStyles = createGlobalStyle`
   }
   html, #root, body {
     height: 100vh;
+    font-size: 62.5%;
   }
 
   .App {

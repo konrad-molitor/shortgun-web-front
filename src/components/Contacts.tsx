@@ -7,7 +7,7 @@ const StyledContactsWrapper = styled.div`
   padding: 50px;
   display: flex;
   flex-direction: column;
-  font-size: 20px;
+  font-size: 1.6rem;
   color: ${props => props.theme.colors.dark};
   width: 80%;
 
@@ -48,7 +48,7 @@ const StyledContactsWrapper = styled.div`
     }
 
     > button {
-      font-size: 20px;
+      font-size: 1.6rem;
       padding: 5px;
       background: ${props => props.theme.semantics.success};
       border: 1px solid ${props => props.theme.colors.dark};
