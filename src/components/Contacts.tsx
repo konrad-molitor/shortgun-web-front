@@ -19,21 +19,20 @@ const StyledContactsWrapper = styled.div`
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
+    align-items: stretch;
     list-style: none;
 
-    > li {
+    > li > a {
       display: flex;
       flex-direction: row;
       justify-content: space-between;
-
+      margin-left: 5px;
+      text-decoration: none;
+      color: ${props => props.theme.colors.dark};
+      font-weight: bold;
       > img {
         margin-right: 5px;
-      }
-
-      > a {
-        margin-left: 5px;
-        text-decoration: none;
-        color: ${props => props.theme.colors.dark};
+        height: 1.6rem;
       }
     }
   }
