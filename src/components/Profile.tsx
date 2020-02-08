@@ -56,7 +56,7 @@ const StyledItemTitle = styled.div`
     margin: 1rem;
 
     @media only screen and (max-width: 768px){
-      width: auto;
+      width: 300px;
     }
   }
 
