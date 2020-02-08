@@ -21,7 +21,8 @@ const StyledWrapper = styled.div`
 
     @media only screen and (max-width: 768px){
         max-width: 100%;
-        border-radius: 0;
+        border-radius: 5px;
+        margin: 1rem;
     }
 `;
 
