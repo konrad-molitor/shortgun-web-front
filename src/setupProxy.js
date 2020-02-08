@@ -7,5 +7,15 @@ module.exports = function(app) {
       target: 'http://localhost:5000',
       changeOrigin: true
     })
-  )
+  );
+  app.use(
+    '/images',
+    proxy({
+      target: 'http://localhost:5003/',
+      changeOrigin: true,
+      pathRewrite: {
+        '^/images/': '/'
+      }
+    })
+  );
 };
