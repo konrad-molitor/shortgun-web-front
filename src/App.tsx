@@ -168,6 +168,12 @@ class App extends Component<any, AppState> {
         label: 'About'
       }
     ];
+    if (this.state.loggedIn) {
+      menuItems.push({
+        link: '/profile',
+        label: 'Profile'
+      })
+    };
     return (
       <div className="App">
         <header>
