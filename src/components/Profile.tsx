@@ -123,6 +123,7 @@ const StyledProfileWrapper = styled.div`
   justify-content: flex-start;
   padding: 0;
   margin: 0;
+  padding-top: 5rem;
 
   @media only screen and (max-width: 768px)
     {   
