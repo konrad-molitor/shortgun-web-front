@@ -1,17 +1,25 @@
 import styled from 'styled-components';
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const StyledFooter = styled.div`
     width: 100%;
     background: ${props => props.theme.colors.dark};
-    height: 5rem;
     color: ${props => props.theme.colors.regular};
     text-align: center;
-    line-height: 5rem;
     padding: 0;
     margin: 0;
     font-weight: bold;
-    font-size: ${props => props.theme.defaults.fontSize};
+    font-size: 1rem;
+
+    > a {
+      text-decoration: none;
+      color: ${props => props.theme.colors.regular};
+
+      &:hover {
+        color: ${props => props.theme.colors.main};
+      }
+    }
 `;
 
 
@@ -19,9 +27,7 @@ const StyledFooter = styled.div`
 const Footer = () => {
     return (
         <StyledFooter as="footer">
-          <div>
-            <span>Copyright &copy; Ismail Valiev (Konrad Molitor)</span>
-          </div>
+            <Link to={"/contacts"}>Copyright &copy; Ismail Valiev (Konrad Molitor)</Link>
         </StyledFooter>
     )
 }
