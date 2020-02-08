@@ -58,6 +58,11 @@ const StyledItemTitle = styled.div`
     @media only screen and (max-width: 768px){
       width: 300px;
     }
+
+    @media only screen and (max-width: 400px) {
+      width: 250px;
+      font-size: 1.5rem;
+    }
   }
 
   > button {
@@ -123,6 +128,7 @@ const StyledProfileWrapper = styled.div`
   justify-content: flex-start;
   padding: 0;
   margin: 0;
+  padding: 1rem;
   padding-top: 5rem;
 
   @media only screen and (max-width: 768px)
