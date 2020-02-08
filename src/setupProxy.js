@@ -9,6 +9,13 @@ module.exports = function(app) {
     })
   );
   app.use(
+    '/s',
+    proxy({
+      target: 'http://localhost:5000',
+      changeOrigin: true
+    })
+  )
+  app.use(
     '/images',
     proxy({
       target: 'http://localhost:5003/',
