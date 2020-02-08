@@ -12,8 +12,6 @@ type profileState = {
   id: string;
   email: string;
   urls: Array<any>;
-  url: string;
-  shortUrl: string;
   baseUrl: string;
   error?: {
     action: string;
@@ -59,58 +57,6 @@ const StyledShortCutItem = styled.div`
   }
 `;
 
-const StyledAddShortcutForm = styled.div`
-  background: ${props => props.theme.semantics.success};
-  border-radius: 5px;
-  width: 50rem;
-  margin: 0;
-  padding: 2rem;
-
-  @media only screen and (max-width: 768px)
-    {   
-        width: auto;
-        padding: 1rem;
-        font-size: ${props => props.theme.defaults.fontSize};
-        border-radius: 0;
-    }
-
-  > form {
-    display: flex;
-    flex-direction: column;
-    font-size: ${props => props.theme.defaults.fontSize};
-    color: ${props => props.theme.colors.dark};
-
-    @media only screen and (max-width: 768px) {
-      font-size: ${props => props.theme.defaults.fontSize};
-    }
-
-    > * {
-      margin-top: 1rem;
-      margin-bottom: 1rem;
-    }
-
-    > label {
-      margin-bottom: 0.5rem;
-      @media only screen and (max-width: 768px) {
-        font-size: ${props => props.theme.defaults.fontSize};
-      }
-    }
-
-    > button {
-      background: ${props => props.theme.colors.main};
-      padding: 0.5rem;
-      border: 1px solid ${props => props.theme.colors.dark};
-      border-radius: 5px;
-      font-size: ${props => props.theme.defaults.fontSize};
-      color: ${props => props.theme.colors.dark};
-
-      @media only screen and (max-width: 768px) {
-        font-size: ${props => props.theme.defaults.fontSize};
-      }
-    }
-  }
-`;
-
 const StyledProfileWrapper = styled.div`
   display: flex;
   flex-direction: column;
@@ -139,8 +85,6 @@ class Profile extends Component<profileProps, profileState> {
     id: '',
     email: '',
     urls: [],
-    url: '',
-    shortUrl: '',
     baseUrl: '',
     error: {
       action: '',
@@ -150,8 +94,6 @@ class Profile extends Component<profileProps, profileState> {
 
   constructor(props: profileProps){
     super(props);
-    this.handleUrl = this.handleUrl.bind(this);
-    this.handleCreateShortcut = this.handleCreateShortcut.bind(this);
     this.handleClipboardCopy = this.handleClipboardCopy.bind(this);
     this.handleOpenUrl = this.handleOpenUrl.bind(this);
     this.handleDeleteShortcut = this.handleDeleteShortcut.bind(this);
@@ -188,49 +130,9 @@ class Profile extends Component<profileProps, profileState> {
     })
   }
 
-  handleCreateShortcut(e: any) {
-    fetch('/a/add', {
-      method: 'POST',
-      headers: {
-        'X-Auth': `Bearer: ${this.props.token}`,
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        longUrl: this.state.url
-      })
-    })
-    .then(res => {
-      if (!res.ok) {
-        throw new Error(res.status.toString());
-      }
-      return res.json()
-    })
-    .then(result => {
-      let newUrls = [result, ...this.state.urls]
-      this.setState({...this.state, 
-        shortUrl: this.state.baseUrl+result.shortUrl, 
-        urls: newUrls,
-        url: ''
-      });
-    })
-    .catch(e => {
-      if (e.message === '401') {
-        this.setState({...this.state, error: {action: 'add_shortcut', message: 'Authorization error occured. Please try to logout and login again.'}});
-      } else if (e.message === '500') {
-        this.setState({...this.state, error: {action: 'add_shortcut', message: 'Internal server error occured. Please try again later.'}});
-      } else {
-        this.setState({...this.state, error: {action: 'add_shortcut', message: 'Unknown error occured. Please check your connection.'}});
-      }
-    })
-  }
-
   handleClipboardCopy(text: string) {
     navigator.clipboard.writeText(text)
     .then(() => {}, err => console.log(err))
-  }
-
-  handleUrl(e: any) {
-    this.setState({...this.state, url: e.target.value});
   }
 
   handleOpenUrl(url: string) {
@@ -261,32 +163,9 @@ class Profile extends Component<profileProps, profileState> {
   render() {
     return(
       <StyledProfileWrapper>
-        <StyledAddShortcutForm>
-          <form>
-            <label>Create shortcut:</label>
-            <CombinedInput 
-              textInput={
-                {
-                  hint: "Paste long URL here", 
-                  onChange: this.handleUrl, 
-                  disable: false,
-                  backgroundColor: this.props.theme.colors.dark,
-                  textColor: this.props.theme.colors.light
-                  }
-                } 
-                button={
-                  {
-                    label: "Create Shortcut",
-                    onClick: this.handleCreateShortcut,
-                    backgroundColor: this.props.theme.colors.main,
-                    textColor: this.props.theme.colors.dark
-                  }
-                }/>
-          </form>
-        </StyledAddShortcutForm>
         {this.state.urls.map((item: any) => {
           return (
-            <StyledShortCutItem>
+            <StyledShortCutItem key={item.id}>
               <CombinedInput
                 textInput={
                   {

@@ -7,6 +7,7 @@ import Profile from './components/Profile';
 import Footer from './components/Footer';
 import { withRouter } from 'react-router-dom';
 import styled from 'styled-components';
+import CreateShortcut from './components/CreateShortcut';
 
 import Navbar from './elements/Navbar';
 
@@ -56,7 +57,6 @@ class App extends Component<any, AppState> {
         //@ts-ignore
         return {...state, token: savedToken.toString(), cookiesInfo: true, loggedIn: true}
       });
-      this.props.history.push('/profile');
     }
   }
 
@@ -88,7 +88,6 @@ class App extends Component<any, AppState> {
       if (keepLogged) {
         window.localStorage.setItem("userToken", result.token);
       }
-      this.props.history.push('/profile');
     }, error => {
       console.log(error)
     })
@@ -183,7 +182,7 @@ class App extends Component<any, AppState> {
           <Switch>
             <Route exact path="/" component={(props: any) => {
                 if (this.state.loggedIn) {
-                  return <Redirect to="/profile"/>
+                  return <CreateShortcut {...props} token={this.state.token}/>
                 } else {
                   return <Start {...props} login={this.handleLogin} signup={this.handleSignup} error={this.state.authError || undefined}/>
                 }
