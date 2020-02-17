@@ -3,7 +3,7 @@
 
 Shortgun Web Client provides Web Client for [Shortgun URL Shortener](https://github.com/konrad-molitor/shortgun). 
 
-![Shortgun Logo](https://images2.imgbox.com/25/dd/NE6zPr7x_o.png)
+![Shortgun in action](https://thumbs2.imgbox.com/43/b9/4EGpcvks_t.gif)
 
 ## Requirements
 * Latest LTS or current version of Node.js installed (for build purposes)
