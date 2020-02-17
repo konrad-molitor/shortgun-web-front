@@ -1,6 +1,6 @@
 [![first-timers-only](https://img.shields.io/badge/first--timers--only-friendly-blue.svg?style=flat-square)](https://www.firsttimersonly.com/)
 
-#Shortgun Web Client
+# Shortgun Web Client
 
 Shortgun Web Client provides Web Client for [Shortgun URL Shortener](https://github.com/konrad-molitor/shortgun). 
 
